@@ -1,0 +1,463 @@
+.stage {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  background: #000;
+}
+
+.video {
+  display: none;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ---------- Top overlay bar ---------- */
+.topBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 14px 18px;
+  background: linear-gradient(to bottom, rgba(7, 8, 10, 0.78), rgba(7, 8, 10, 0));
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.brandAccent {
+  color: var(--amber);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.select,
+.numberInput,
+.textInput {
+  background: rgba(20, 23, 28, 0.72);
+  color: var(--text);
+  border: 1px solid rgba(245, 243, 238, 0.16);
+  border-radius: 7px;
+  padding: 6px 8px;
+  font-size: 12px;
+  outline: none;
+  backdrop-filter: blur(4px);
+}
+
+.select:focus,
+.numberInput:focus,
+.textInput:focus {
+  border-color: var(--violet);
+}
+
+.numberInput {
+  width: 58px;
+}
+
+.octaveSelect {
+  background: rgba(20, 23, 28, 0.72);
+  color: var(--text);
+  border: 1px solid rgba(245, 243, 238, 0.16);
+  border-radius: 7px;
+  padding: 6px 8px;
+  font-size: 12px;
+  outline: none;
+  backdrop-filter: blur(4px);
+  width: 72px;
+}
+
+.octaveSelect:focus {
+  border-color: var(--violet);
+}
+
+.modeToggle {
+  display: flex;
+  border: 1px solid rgba(245, 243, 238, 0.16);
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.modeToggle button {
+  border: none;
+  background: rgba(20, 23, 28, 0.72);
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 11px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.modeToggle button.active {
+  background: var(--violet);
+  color: #0b0d10;
+}
+
+.startBtn {
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 7px;
+  border: 1px solid var(--amber);
+  background: var(--amber);
+  color: #1a1305;
+  padding: 7px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.startBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.helpBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  border: 1px solid rgba(245, 243, 238, 0.16);
+  background: rgba(20, 23, 28, 0.72);
+  color: var(--violet-soft);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+
+.helpBtn:hover {
+  border-color: var(--violet);
+}
+
+.tutorialLink {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tutorialLink:hover {
+  color: var(--violet-soft);
+}
+
+.scoreBox {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.score {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--amber);
+  line-height: 1.1;
+}
+
+.metaRow {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.metaRow .combo {
+  color: var(--violet);
+}
+
+.metaRow .hitCount {
+  color: var(--green);
+}
+
+.metaRow .missCount {
+  color: var(--red);
+}
+
+/* Custom progression row (mouse panel) */
+.customRow {
+  position: absolute;
+  top: auto;
+  bottom: 168px;
+  left: 12px;
+  right: 12px;
+  z-index: 6;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.customRow .textInput {
+  flex: 1;
+  min-width: 200px;
+}
+
+.applyBtn {
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 7px;
+  border: 1px solid rgba(245, 243, 238, 0.16);
+  background: rgba(20, 23, 28, 0.72);
+  color: var(--text);
+  padding: 6px 12px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+
+.applyBtn:hover {
+  border-color: var(--violet);
+}
+
+/* ---------- Bottom overlay bar ---------- */
+.bottomBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  padding: 14px 18px 18px;
+  background: linear-gradient(to top, rgba(7, 8, 10, 0.82), rgba(7, 8, 10, 0));
+}
+
+.nowRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.nowLabel {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.nowChord {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--amber);
+}
+
+.freestyleBadge {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--violet-soft);
+  line-height: 1.1;
+}
+
+.freestyleHint {
+  margin: 0;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.floatingActions {
+  position: absolute;
+  right: 14px;
+  bottom: 96px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.floatingBtn,
+.floatingBtnDanger {
+  border-radius: 8px;
+  border: 1px solid rgba(245, 243, 238, 0.16);
+  background: rgba(12, 14, 18, 0.82);
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 8px 12px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+
+.floatingBtn:hover {
+  border-color: var(--violet);
+}
+
+.floatingBtnDanger {
+  border-color: rgba(255, 92, 114, 0.45);
+  color: #ffb3be;
+}
+
+.mousePanel {
+  position: absolute;
+  top: 88px;
+  left: 12px;
+  right: 12px;
+  z-index: 6;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(245, 243, 238, 0.12);
+  background: rgba(10, 12, 15, 0.94);
+  backdrop-filter: blur(10px);
+}
+
+.mousePanelTitle {
+  margin: 0 0 10px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.mousePanelControls,
+.startSettingsControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.startSettings {
+  width: min(520px, 100%);
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(245, 243, 238, 0.1);
+  background: rgba(14, 17, 22, 0.72);
+}
+
+.startSettingsLabel {
+  margin: 0 0 8px;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: left;
+}
+
+/* ---------- Start overlay ---------- */
+.startOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    circle at 50% 40%,
+    rgba(139, 124, 246, 0.16),
+    rgba(11, 13, 16, 0.96) 72%
+  );
+  padding: 20px;
+}
+
+.startCard {
+  width: min(340px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 28px 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(245, 243, 238, 0.1);
+  background: rgba(12, 14, 18, 0.88);
+  backdrop-filter: blur(8px);
+}
+
+.startBrand {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.startTitle {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.startLead {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.65;
+  max-width: 280px;
+}
+
+.startBtnLarge {
+  margin-top: 6px;
+  width: 100%;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid var(--amber);
+  background: var(--amber);
+  color: #1a1305;
+  padding: 14px 20px;
+  cursor: pointer;
+}
+
+.startBtnLarge:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.startOverlay h2 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.startOverlay p {
+  color: var(--text-muted);
+  font-size: 13px;
+  max-width: 460px;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.statusLine {
+  font-size: 12px;
+  color: var(--amber);
+  min-height: 16px;
+  max-width: 480px;
+}
+
+.startOverlay .startBtn {
+  font-size: 14px;
+  padding: 11px 26px;
+}
+
+.startCard .tutorialLink {
+  margin-top: 2px;
+}
+
+.startCard .statusLine {
+  margin-top: 4px;
+}
+
+.footnote {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.footnote code {
+  background: var(--panel-2);
+  padding: 1px 5px;
+  border-radius: 4px;
+}

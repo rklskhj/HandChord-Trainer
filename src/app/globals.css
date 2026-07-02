@@ -1,0 +1,42 @@
+:root {
+  --bg: #0b0d10;
+  --panel: #14171c;
+  --panel-2: #1b1f26;
+  --line: #262b33;
+  --text: #f5f3ee;
+  --text-muted: #8a8f98;
+  --amber: #f2b33d;
+  --violet: #8b7cf6;
+  --violet-soft: #c9bfff;
+  --red: #ff5c72;
+  --green: #4ade80;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-jetbrains-mono), monospace;
+}
+
+button {
+  font: inherit;
+}

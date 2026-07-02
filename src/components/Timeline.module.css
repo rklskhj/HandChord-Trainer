@@ -1,0 +1,47 @@
+.track {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 2px;
+  max-width: 100%;
+}
+
+.chip {
+  flex: 0 0 auto;
+  min-width: 46px;
+  text-align: center;
+  padding: 7px 8px 6px;
+  border-radius: 9px;
+  background: rgba(27, 31, 38, 0.55);
+  border: 1px solid rgba(245, 243, 238, 0.14);
+  font-weight: 600;
+  font-size: 13px;
+  color: rgba(245, 243, 238, 0.65);
+  transition: all 0.15s ease;
+  backdrop-filter: blur(4px);
+}
+
+.idx {
+  display: block;
+  font-size: 8px;
+  color: rgba(245, 243, 238, 0.4);
+  margin-bottom: 2px;
+}
+
+.current {
+  background: rgba(242, 179, 61, 0.22);
+  border-color: var(--amber);
+  color: var(--amber);
+  transform: scale(1.1);
+}
+
+.hit {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.miss {
+  border-color: var(--red);
+  color: var(--red);
+  opacity: 0.8;
+}
